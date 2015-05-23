@@ -39,6 +39,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite">
@@ -59,6 +60,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Controls\ScrollableTabPanel.cs" />
+    <Compile Include="Classes\Converters\BaseConverter.cs" />
+    <Compile Include="Classes\Converters\ScrollbarConverters.cs" />
     <Compile Include="Classes\StatusEventArgs.cs" />
     <Page Include="Views\SettingsDbView.xaml">
       <Generator>MSBuild:Compile</Generator>

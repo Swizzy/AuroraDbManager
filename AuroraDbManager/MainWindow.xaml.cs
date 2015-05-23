@@ -24,9 +24,8 @@ namespace AuroraDbManager {
             var ver = Assembly.GetAssembly(typeof(MainWindow)).GetName().Version;
             Title = string.Format(Title, ver.Major, ver.Minor);
             ContentDbViewTab.Content = _contentDbView;
-            _contentDbView.StatusChanged += (sender, args) => Dispatcher.Invoke(new Action(() => Status.Text = args.Status));
             SettingsDbViewTab.Content = _settingsDbView;
-            _settingsDbView.StatusChanged += (sender, args) => Dispatcher.Invoke(new Action(() => Status.Text = args.Status));
+            App.StatusChanged += (sender, args) => Dispatcher.Invoke(new Action(() => Status.Text = args.Status));
         }
 
         private void SelectContentDb(object sender, RoutedEventArgs e) {
@@ -39,6 +38,24 @@ namespace AuroraDbManager {
             var bw = new BackgroundWorker();
             bw.DoWork += (o, args) => _settingsDbView.OpenDb();
             bw.RunWorkerAsync();
+        }
+
+        private void OnDragEnter(object sender, DragEventArgs e) {
+            if(ContentDbViewTab.IsSelected || SettingsDbViewTab.IsSelected) {
+                if (e.Data.GetDataPresent(DataFormats.FileDrop) && (e.AllowedEffects & DragDropEffects.Copy) == DragDropEffects.Copy)
+                    e.Effects = DragDropEffects.Copy;
+                else
+                    e.Effects = DragDropEffects.None; // Ignore this one
+            }
+            else
+                e.Effects = DragDropEffects.None; // Ignore this one
+        }
+
+        private void OnDrop(object sender, DragEventArgs e) {
+            if (ContentDbViewTab.IsSelected)
+                _contentDbView.OpenDb(((string[])e.Data.GetData(DataFormats.FileDrop))[0]);
+            else if (SettingsDbViewTab.IsSelected)
+                _settingsDbView.OpenDb(((string[])e.Data.GetData(DataFormats.FileDrop))[0]);
         }
     }
 }
