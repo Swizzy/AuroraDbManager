@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="AuroraDbManager.Views.SettingsDbView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Background="WhiteSmoke">
+    <Grid>
+        <TabControl TabStripPlacement="Bottom">
+            <TabItem Header="Active TU" x:Name="ActiveTuTab"/>
+            <TabItem Header="Profiles" x:Name="ProfilesTab"/>
+            <TabItem Header="Quick Views" x:Name="QuickViewsTab"/>
+            <TabItem Header="System Settings" x:Name="SystemSettingsTab"/>
+            <TabItem Header="User Settings" x:Name="UserSettingsTab"/>
+            <TabItem Header="Scan Paths" x:Name="ScanPathsTab"/>
+            <TabItem Header="Trainers" x:Name="TrainersTab"/>
+            <TabItem Header="Favorite Titles" x:Name="UserFavoritesTab"/>
+            <TabItem Header="Hidden Titles" x:Name="UserHiddenTab"/>
+            <TabItem Header="Recent Games" x:Name="UserRecentTab"/>
+        </TabControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="AuroraDbManager.Views.ContentDbView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:conv="clr-namespace:AuroraDbManager.Classes.Converters"
+             mc:Ignorable="d" Background="WhiteSmoke">
+    <Grid>
+        <Grid>
+            <DataGrid x:Name="DbViewBox" IsTextSearchEnabled="False" AlternationCount="2"
+                      AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                      ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                      RowBackground="WhiteSmoke" IsReadOnly="True" SelectionChanged="DbViewChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Title" Binding="{Binding TitleName}" Width="Auto" />
+                    <DataGridTextColumn Header="TitleID" Width="Auto">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="TitleId">
+                                <Binding.Converter>
+                                    <conv:IntHexConverter />
+                                </Binding.Converter>
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="MediaID" Width="Auto">
+                        <DataGridTextColumn.Binding>
+                            <Binding Path="MediaId">
+                                <Binding.Converter>
+                                    <conv:IntHexConverter />
+                                </Binding.Converter>
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Disc#" Binding="{Binding DiscNum}" Width="Auto" />
+                    <DataGridTextColumn Header="# of Discs" Binding="{Binding DiscsInSet}" Width="Auto" />
+                    <DataGridTextColumn Header="Base Version"
+                                        Binding="{Binding BaseVersion, Converter={conv:IntHexConverter}}" Width="Auto" />
+                    <DataGridTextColumn Header="Offline Players" Binding="{Binding GamePlayers.OfflinePlayers}"
+                                        Width="Auto" />
+                    <DataGridTextColumn Header="Offline Co-Op Players"
+                                        Binding="{Binding GamePlayers.OfflineCoOpPlayers}" Width="Auto" />
+                    <DataGridTextColumn Header="Offline SystemLink Players"
+                                        Binding="{Binding GamePlayers.OfflineSystemLinkPlayers}" Width="Auto" />
+                    <DataGridTextColumn Header="Online Multiplayer Players"
+                                        Binding="{Binding GamePlayers.OnlineMultiplayerPlayers}" Width="Auto" />
+                    <DataGridTextColumn Header="Online Co-Op Players" Binding="{Binding GamePlayers.OnlineCoOpPlayers}"
+                                        Width="Auto" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

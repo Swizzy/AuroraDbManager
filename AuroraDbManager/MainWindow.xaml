@@ -1,0 +1,26 @@
+﻿<Window x:Class="AuroraDbManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Aurora Database Manager v{0}.{1}" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Background="White">
+            <MenuItem Header="File">
+                <MenuItem Header="Select Content Database" Click="SelectContentDb" />
+                <MenuItem Header="Select Settings Database" Click="SelectSettingsDb" />
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Content Database View" x:Name="ContentDbViewTab" />
+            <TabItem Header="Settings Database View" x:Name="SettingsDbViewTab" />
+        </TabControl>
+        <StatusBar Grid.Row="2" Background="White">
+            <TextBlock Text="Status:" />
+            <TextBlock Text="Waiting for user input..." x:Name="Status"/>
+        </StatusBar>
+    </Grid>
+</Window>
