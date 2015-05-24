@@ -7,6 +7,7 @@
 
 namespace AuroraDbManager.Views {
     using System;
+    using System.IO;
     using AuroraDbManager.Classes;
     using Microsoft.Win32;
 
@@ -24,9 +25,14 @@ namespace AuroraDbManager.Views {
                         return;
                     filename = ofd.FileName;
                 }
+                if(!File.Exists(filename)) {
+                    SendStatusChanged("ERROR: {0} Does not exist", filename);
+                    return;
+                }
                 SendStatusChanged("Loading {0}...", filename);
-                App.DbManager.ConnectToContent(filename);
+                App.DbManager.ConnectToSettings(filename);
                 //Dispatcher.Invoke(new Action(() => ContentDbViewBox.ItemsSource = App.DbManager.GetContentItems()));
+                //TODO: Make it load all settings
                 SendStatusChanged("Finished loading Settings DB...");
             }
             catch(Exception ex) {

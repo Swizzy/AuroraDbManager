@@ -9,6 +9,50 @@
         <TabControl>
             <TabItem Header="Active TUs">
                 <DataGrid x:Name="ActiveTuBox" IsTextSearchEnabled="False" AlternationCount="2"
+                          AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                          CanUserResizeColumns="True" CanUserResizeRows="False"
+                          AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                          ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                          SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                          RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="TU ID" Width="Auto" Binding="{Binding TitleUpdateId}" />
+                        <DataGridTextColumn Header="Display Name" Binding="{Binding Info.DisplayName}" Width="Auto" />
+                        <DataGridTextColumn Header="TitleID" Width="Auto"
+                                            Binding="{Binding Info.TitleID, Converter={conv:IntHexConverter}}" />
+                        <DataGridTextColumn Header="MediaID" Width="Auto"
+                                            Binding="{Binding Info.MediaID, Converter={conv:IntHexConverter}}" />
+                        <DataGridTextColumn Header="Base Version"
+                                            Binding="{Binding Info.BaseVersion, Converter={conv:IntHexConverter}}"
+                                            Width="Auto" />
+                        <DataGridTextColumn Header="Version" Width="Auto" Binding="{Binding Info.Version}" />
+                        <DataGridTextColumn Header="Filename" Width="Auto" Binding="{Binding Info.FileName}" />
+                        <DataGridTextColumn Header="Filesize" Width="Auto" Binding="{Binding Info.FileSize}" />
+                        <DataGridTextColumn Header="Device ID" Width="Auto" Binding="{Binding Info.LiveDeviceId}" />
+                        <DataGridTextColumn Header="Path" Width="Auto" Binding="{Binding Info.LivePath}" />
+                        <DataGridTextColumn Header="Backup Path" Width="Auto" Binding="{Binding Info.BackupPath}" />
+                        <DataGridTextColumn Header="Hash" Width="Auto" Binding="{Binding Info.Hash}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Profiles">
+                <DataGrid x:Name="ProfilesBox" IsTextSearchEnabled="False" AlternationCount="2"
+                          AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                          CanUserResizeColumns="True" CanUserResizeRows="False"
+                          AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                          ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                          SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                          RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Gamertag" Width="Auto" Binding="{Binding GameTag}" />
+                        <DataGridTextColumn Header="XUID" Width="Auto" Binding="{Binding Xuid}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Quick Views">
+                <DataGrid x:Name="QuickViewsBox" IsTextSearchEnabled="False" AlternationCount="2"
                       AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
                       CanUserResizeColumns="True" CanUserResizeRows="False"
                       AlternatingRowBackground="LightGray" HeadersVisibility="Column"
@@ -17,30 +61,127 @@
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="TU ID" Width="Auto" Binding="{Binding TitleUpdateId}"/>
-                        <DataGridTextColumn Header="Display Name" Binding="{Binding Info.DisplayName}" Width="Auto" />
-                        <DataGridTextColumn Header="TitleID" Width="Auto" Binding="{Binding Info.TitleID, Converter={conv:IntHexConverter}}" />
-                        <DataGridTextColumn Header="MediaID" Width="Auto" Binding="{Binding Info.MediaID, Converter={conv:IntHexConverter}}" />
-                        <DataGridTextColumn Header="Base Version" Binding="{Binding Info.BaseVersion, Converter={conv:IntHexConverter}}" Width="Auto" />
-                        <DataGridTextColumn Header="Version" Width="Auto" Binding="{Binding Info.Version}"/>
-                        <DataGridTextColumn Header="Filename" Width="Auto" Binding="{Binding Info.FileName}"/>
-                        <DataGridTextColumn Header="Filesize" Width="Auto" Binding="{Binding Info.FileSize}"/>
-                        <DataGridTextColumn Header="Device ID" Width="Auto" Binding="{Binding Info.LiveDeviceId}"/>
-                        <DataGridTextColumn Header="Path" Width="Auto" Binding="{Binding Info.LivePath}"/>
-                        <DataGridTextColumn Header="Backup Path" Width="Auto" Binding="{Binding Info.BackupPath}"/>
-                        <DataGridTextColumn Header="Hash" Width="Auto" Binding="{Binding Info.Hash}"/>
+                        <DataGridTextColumn Header="Display Name" Width="Auto" Binding="{Binding DisplayName}"/>
+                        <DataGridTextColumn Header="Sort Method" Width="Auto" Binding="{Binding SortMethod}"/>
+                        <DataGridTextColumn Header="Filters" Width="Auto" Binding="{Binding FilterMethod}"/>
+                        <DataGridTextColumn Header="Flags" Width="Auto" Binding="{Binding Flags}"/>
+                        <DataGridTextColumn Header="Creator XUID" Width="Auto" Binding="{Binding CreatorXUID}"/>
+                        <DataGridTextColumn Header="Order #" Width="Auto" Binding="{Binding OrderIndex}"/>
+                        <DataGridTextColumn Header="Icon Hash" Width="Auto" Binding="{Binding IconHash}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Profiles" x:Name="ProfilesTab"/>
-            <TabItem Header="Quick Views" x:Name="QuickViewsTab"/>
-            <TabItem Header="System Settings" x:Name="SystemSettingsTab"/>
-            <TabItem Header="User Settings" x:Name="UserSettingsTab"/>
-            <TabItem Header="Scan Paths" x:Name="ScanPathsTab"/>
-            <TabItem Header="Trainers" x:Name="TrainersTab"/>
-            <TabItem Header="Favorite Titles" x:Name="UserFavoritesTab"/>
-            <TabItem Header="Hidden Titles" x:Name="UserHiddenTab"/>
-            <TabItem Header="Recent Games" x:Name="UserRecentTab"/>
+            <TabItem Header="Scan Paths">
+                <DataGrid x:Name="ScanPathsBox" IsTextSearchEnabled="False" AlternationCount="2"
+                      AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                      ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                      RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Path" Width="Auto" Binding="{Binding Path}"/>
+                        <DataGridTextColumn Header="Device ID" Width="Auto" Binding="{Binding DeviceID}" />
+                        <DataGridTextColumn Header="Depth" Width="Auto" Binding="{Binding Depth}" />
+                        <DataGridTextColumn Header="Script Data" Width="Auto" Binding="{Binding ScriptData}" />
+                        <DataGridTextColumn Header="Options" Width="Auto" Binding="{Binding OptionsFlag}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="System Settings">
+                <DataGrid x:Name="SystemSettingsBox" IsTextSearchEnabled="False" AlternationCount="2"
+                      AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                      ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                      RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Name" Width="Auto" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Value" Width="Auto" Binding="{Binding Value}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="User Settings">
+                <DataGrid x:Name="UserSettingsBox" IsTextSearchEnabled="False" AlternationCount="2"
+                      AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                      ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                      RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Name" Width="Auto" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Value" Width="Auto" Binding="{Binding Value}" />
+                        <DataGridTextColumn Header="Profile ID" Width="Auto" Binding="{Binding ProfileId}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Trainers" x:Name="TrainersTab">
+                <DataGrid x:Name="TrainersBox" IsTextSearchEnabled="False" AlternationCount="2"
+                      AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                      ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                      RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="TitleID" Width="Auto" Binding="{Binding TitleID, Converter={conv:IntHexConverter}}" />
+                        <DataGridTextColumn Header="Hash" Width="Auto" Binding="{Binding Hash}"/>
+                        <DataGridTextColumn Header="Value" Width="Auto" Binding="{Binding Value}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Favorite Titles">
+                <DataGrid x:Name="UserFavoritesBox" IsTextSearchEnabled="False" AlternationCount="2"
+                      AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                      ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                      RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Content ID" Width="Auto" Binding="{Binding ContentId}"/>
+                        <DataGridTextColumn Header="Profile ID" Width="Auto" Binding="{Binding ProfileId}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Hidden Titles">
+                <DataGrid x:Name="UserHiddenBox" IsTextSearchEnabled="False" AlternationCount="2"
+                      AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                      ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                      RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Content ID" Width="Auto" Binding="{Binding ContentId}"/>
+                        <DataGridTextColumn Header="Profile ID" Width="Auto" Binding="{Binding ProfileId}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Recent Games">
+                <DataGrid x:Name="UserRecentBox" IsTextSearchEnabled="False" AlternationCount="2"
+                      AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                      ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                      RowBackground="WhiteSmoke" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Date &amp; Time" Width="Auto" Binding="{Binding DateTime}"/>
+                        <DataGridTextColumn Header="Content ID" Width="Auto" Binding="{Binding ContentId}"/>
+                        <DataGridTextColumn Header="Profile ID" Width="Auto" Binding="{Binding ProfileId}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
         </TabControl>
     </Grid>
 </UserControl>

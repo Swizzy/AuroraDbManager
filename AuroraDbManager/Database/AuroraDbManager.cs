@@ -7,6 +7,7 @@
 
 namespace AuroraDbManager.Database {
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Data.SQLite;
     using System.Linq;
@@ -80,7 +81,9 @@ namespace AuroraDbManager.Database {
             }
         }
 
-        public ContentItem[] GetContentItems() { return GetContentDataTable("SELECT * FROM ContentItems").Select().Select(row => new ContentItem(row)).ToArray(); }
+        public IEnumerable<ContentItem> GetContentItems() { return GetContentDataTable("SELECT * FROM ContentItems").Select().Select(row => new ContentItem(row)).ToArray(); }
+
+        public IEnumerable<TitleUpdateItem> GetTitleUpdateItems() { return GetContentDataTable("SELECT * FROM TitleUpdates").Select().Select(row => new TitleUpdateItem(row)).ToArray(); }
 
         public class ContentItem {
             public enum ContentFlagValues {}
@@ -242,6 +245,47 @@ namespace AuroraDbManager.Database {
 
                 public byte MaximumOfflinePlayers { get; set; }
             }
+        }
+
+        public class TitleUpdateItem {
+            public TitleUpdateItem(DataRow row) {
+                Id = (int)((long)row["Id"]);
+                DisplayName = (string)row["DisplayName"];
+                TitleId = (int)((long)row["TitleId"]);
+                MediaId = (int)((long)row["MediaId"]);
+                BaseVersion = (int)((long)row["BaseVersion"]);
+                Version = (int)((long)row["Version"]);
+                FileName = (string)row["FileName"];
+                FileSize = (long)row["FileSize"]; // This isn't 100% correct, it's actually stored as "##.##kb", or "##.#MB" for instance... and not as an integer number, but trying to cast it to string causes a crash... dunno how to do this one?
+                LiveDeviceId = (string)row["LiveDeviceId"];
+                LivePath = (string)row["LivePath"];
+                BackupPath = (string)row["BackupPath"];
+                Hash = (string)row["Hash"];
+            }
+
+            public int Id { get; private set; }
+
+            public string DisplayName { get; private set; }
+
+            public int TitleId { get; set; }
+
+            public int MediaId { get; set; }
+
+            public int BaseVersion { get; set; }
+
+            public int Version { get; set; }
+
+            public string FileName { get; set; }
+
+            public long FileSize { get; private set; }
+
+            public string LiveDeviceId { get; private set; }
+
+            public string LivePath { get; set; }
+
+            public string BackupPath { get; private set; }
+
+            public string Hash { get; private set; }
         }
     }
 }

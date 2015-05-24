@@ -15,9 +15,7 @@ namespace AuroraDbManager.Views {
     ///     Interaction logic for ContentDbView.xaml
     /// </summary>
     public partial class ContentDbView {
-        public ContentDbView() {
-            InitializeComponent();
-        }
+        public ContentDbView() { InitializeComponent(); }
 
         public void OpenDb(string filename = null) {
             try {
@@ -29,7 +27,8 @@ namespace AuroraDbManager.Views {
                 }
                 SendStatusChanged("Loading {0}...", filename);
                 App.DbManager.ConnectToContent(filename);
-                Dispatcher.Invoke(new Action(() => DbViewBox.ItemsSource = App.DbManager.GetContentItems()));
+                Dispatcher.Invoke(new Action(() => ContentDbViewBox.ItemsSource = App.DbManager.GetContentItems()));
+                Dispatcher.Invoke(new Action(() => TitleUpdatesDbViewBox.ItemsSource = App.DbManager.GetTitleUpdateItems()));
                 SendStatusChanged("Finished loading Content DB...");
             }
             catch(Exception ex) {
