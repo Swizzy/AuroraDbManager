@@ -9,54 +9,89 @@
         <TabControl>
             <TabItem Header="Content Items">
                 <DataGrid x:Name="ContentDbViewBox" IsTextSearchEnabled="False" AlternationCount="2"
-                  AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
-                  CanUserResizeColumns="True" CanUserResizeRows="False"
-                  AlternatingRowBackground="LightGray" HeadersVisibility="Column"
-                  ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
-                  SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
-                  RowBackground="WhiteSmoke" IsReadOnly="True" SelectionChanged="DbViewChanged">
+                          AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                          CanUserResizeColumns="True" CanUserResizeRows="True"
+                          AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                          ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                          SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                          RowBackground="WhiteSmoke" IsReadOnly="True" SelectionChanged="DbViewChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Title" Binding="{Binding TitleName}" Width="Auto" />
-                        <DataGridTextColumn Header="TitleID" Binding="{Binding TitleId, Converter={conv:IntHexConverter}}" Width="Auto" />
-                        <DataGridTextColumn Header="MediaID" Binding="{Binding MediaId, Converter={conv:IntHexConverter}}" Width="Auto" />
-                        <DataGridTextColumn Header="Disc#" Binding="{Binding DiscNum}" Width="Auto" />
-                        <DataGridTextColumn Header="# of Discs" Binding="{Binding DiscsInSet}" Width="Auto" />
-                        <DataGridTextColumn Header="Base Version" Binding="{Binding BaseVersion, Converter={conv:IntHexConverter}}" Width="Auto" />
+                        <DataGridTextColumn Header="Id" Width="SizeToCells" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Title" Binding="{Binding TitleName}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="TitleID"
+                                            Binding="{Binding TitleId, Converter={conv:IntHexConverter}}"
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="MediaID"
+                                            Binding="{Binding MediaId, Converter={conv:IntHexConverter}}"
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="Disc" Binding="{Binding DiscInfo}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Base Version"
+                                            Binding="{Binding BaseVersion, Converter={conv:IntHexConverter}}"
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="Publisher" Binding="{Binding Publisher}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Developer" Binding="{Binding Developer}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Live Rating" Binding="{Binding LiveRating}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Live Raters" Binding="{Binding LiveRaters}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Release Date" Binding="{Binding ReleaseDate}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Genre(s)" Binding="{Binding GenreFlag}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Content Flag(s)" Binding="{Binding ContentFlags}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Content Type(s)" Binding="{Binding ContentType}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Content Group" Binding="{Binding ContentGroup}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Default Group" Binding="{Binding DefaultGroup}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="LiNK Compatible" Binding="{Binding SystemLink}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="DateAdded" Binding="{Binding DateAdded, Converter={conv:DateConverter}}" Width="SizeToCells" />
                         <DataGridTextColumn Header="Offline Players" Binding="{Binding GamePlayers.OfflinePlayers}"
-                                    Width="Auto" />
+                                            Width="SizeToCells" />
                         <DataGridTextColumn Header="Offline Co-Op Players"
-                                    Binding="{Binding GamePlayers.OfflineCoOpPlayers}" Width="Auto" />
+                                            Binding="{Binding GamePlayers.OfflineCoOpPlayers}" Width="SizeToCells" />
                         <DataGridTextColumn Header="Offline SystemLink Players"
-                                    Binding="{Binding GamePlayers.OfflineSystemLinkPlayers}" Width="Auto" />
+                                            Binding="{Binding GamePlayers.OfflineSystemLinkPlayers}"
+                                            Width="SizeToCells" />
                         <DataGridTextColumn Header="Online Multiplayer Players"
-                                    Binding="{Binding GamePlayers.OnlineMultiplayerPlayers}" Width="Auto" />
-                        <DataGridTextColumn Header="Online Co-Op Players" Binding="{Binding GamePlayers.OnlineCoOpPlayers}"
-                                    Width="Auto" />
+                                            Binding="{Binding GamePlayers.OnlineMultiplayerPlayers}"
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="Online Co-Op Players"
+                                            Binding="{Binding GamePlayers.OnlineCoOpPlayers}"
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="Game Capabilities" Binding="{Binding GameCapsFlags}"
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="Description"
+                                            Binding="{Binding Description, Converter={conv:DescriptionConverter}}"
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="Found At Depth" Binding="{Binding FoundAtDepth}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Scanpath ID" Binding="{Binding ScanPathId}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Directory" Binding="{Binding Directory}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Executable" Binding="{Binding Executable}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="File Type" Binding="{Binding FileType}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="Hash" Binding="{Binding Hash}" Width="SizeToCells" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
             <TabItem Header="Title Updates">
                 <DataGrid x:Name="TitleUpdatesDbViewBox" IsTextSearchEnabled="False" AlternationCount="2"
-                  AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
-                  CanUserResizeColumns="True" CanUserResizeRows="False"
-                  AlternatingRowBackground="LightGray" HeadersVisibility="Column"
-                  ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
-                  SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
-                  RowBackground="WhiteSmoke" IsReadOnly="True" SelectionChanged="DbViewChanged">
+                          AutoGenerateColumns="False" CanUserSortColumns="True" CanUserReorderColumns="True"
+                          CanUserResizeColumns="True" CanUserResizeRows="False"
+                          AlternatingRowBackground="LightGray" HeadersVisibility="Column"
+                          ColumnWidth="*" CanUserDeleteRows="False" CanUserAddRows="False"
+                          SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
+                          RowBackground="WhiteSmoke" IsReadOnly="True" SelectionChanged="DbViewChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Display Name" Binding="{Binding DisplayName}" Width="Auto" />
-                        <DataGridTextColumn Header="TitleID" Width="Auto" Binding="{Binding TitleId, Converter={conv:IntHexConverter}}" />
-                        <DataGridTextColumn Header="MediaID" Width="Auto" Binding="{Binding MediaId, Converter={conv:IntHexConverter}}" />
-                        <DataGridTextColumn Header="Base Version" Binding="{Binding BaseVersion, Converter={conv:IntHexConverter}}" Width="Auto" />
-                        <DataGridTextColumn Header="Version" Width="Auto" Binding="{Binding Version}"/>
-                        <DataGridTextColumn Header="Filename" Width="Auto" Binding="{Binding FileName}"/>
-                        <DataGridTextColumn Header="Filesize" Width="Auto" Binding="{Binding FileSize}"/>
-                        <DataGridTextColumn Header="Path" Width="Auto" Binding="{Binding LivePath}"/>
-                        <DataGridTextColumn Header="Backup Path" Width="Auto" Binding="{Binding BackupPath}"/>
-                        <DataGridTextColumn Header="Device ID" Width="Auto" Binding="{Binding LiveDeviceId}"/>
-                        <DataGridTextColumn Header="Hash" Width="Auto" Binding="{Binding Hash}"/>
+                        <DataGridTextColumn Header="Id" Width="SizeToCells" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Display Name" Binding="{Binding DisplayName}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="TitleID" Width="SizeToCells"
+                                            Binding="{Binding TitleId, Converter={conv:IntHexConverter}}" />
+                        <DataGridTextColumn Header="MediaID" Width="SizeToCells"
+                                            Binding="{Binding MediaId, Converter={conv:IntHexConverter}}" />
+                        <DataGridTextColumn Header="Base Version"
+                                            Binding="{Binding BaseVersion, Converter={conv:IntHexConverter}}"
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="Version" Width="SizeToCells" Binding="{Binding Version}" />
+                        <DataGridTextColumn Header="Filename" Width="SizeToCells" Binding="{Binding FileName}" />
+                        <DataGridTextColumn Header="Filesize" Width="SizeToCells" Binding="{Binding FileSize}" />
+                        <DataGridTextColumn Header="Path" Width="SizeToCells" Binding="{Binding LivePath}" />
+                        <DataGridTextColumn Header="Backup Path" Width="SizeToCells" Binding="{Binding BackupPath}" />
+                        <DataGridTextColumn Header="Device ID" Width="SizeToCells" Binding="{Binding LiveDeviceId}" />
+                        <DataGridTextColumn Header="Hash" Width="SizeToCells" Binding="{Binding Hash}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

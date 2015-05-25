@@ -83,18 +83,63 @@ namespace AuroraDbManager.Database {
 
         public IEnumerable<ContentItem> GetContentItems() { return GetContentDataTable("SELECT * FROM ContentItems").Select().Select(row => new ContentItem(row)).ToArray(); }
 
-        public IEnumerable<TitleUpdateItem> GetTitleUpdateItems() { return GetContentDataTable("SELECT * FROM TitleUpdates").Select().Select(row => new TitleUpdateItem(row)).ToArray(); }
+        public IEnumerable<TitleUpdateItem> GetTitleUpdateItems() {
+            return GetContentDataTable("SELECT CAST(FileSize AS TEXT) AS FileSize, * FROM TitleUpdates").Select().Select(row => new TitleUpdateItem(row)).ToArray();
+        }
 
         public class ContentItem {
-            public enum ContentFlagValues {}
+            [Flags] public enum ContentFlagValues {
+                KinectCompatible = 1,
+                SystemLinkCompatible = 2,
+                RetailSigned = 4,
+                DevkitSigned = 8,
+            }
 
-            public enum ContentGroupValues {}
+            [Flags] public enum ContentGroupValues {
+                Hidden = 0,
+                Xbox360 = 1,
+                Xbla = 2,
+                Indie = 3,
+                XboxClassic = 4,
+                Unsigned = 5,
+                LibXenon = 6,
+                Count = 7
+            }
 
-            public enum ContentTypeValues {}
+            [Flags] public enum ContentTypeValues {}
 
-            public enum GameCapsFlagsValues {}
+            [Flags] public enum FileTypes {
+                Xex = 1,
+                GamesOnDemand = 3
+            }
 
-            public enum GenreFlagValues {}
+            [Flags] public enum GameCapsFlagsValues {
+                None = 0,
+                DolbyDigitalSupported = 1,
+                RequiresOnlineHdd = 2,
+                RequiresOfflineHdd = 4,
+                OnlineLeaderBoards = 8,
+                OnlineContentDownload = 16,
+                OnlineVoice = 32
+            }
+
+            [Flags] public enum GenreFlagValues {
+                Unknown = 0,
+                Other = 1,
+                ActionAdventure = 2,
+                Family = 4,
+                Fighting = 8,
+                Music = 16,
+                Platformer = 32,
+                RacingFlying = 64,
+                RolePlaying = 128,
+                Shooter = 256,
+                StrategySimulation = 512,
+                SportsRecreation = 1024,
+                CardBoard = 2048,
+                Classics = 4096,
+                PuzzleTrivia = 8192
+            }
 
             public ContentItem(DataRow row) {
                 Id = (int)((long)row["Id"]);
@@ -119,21 +164,21 @@ namespace AuroraDbManager.Database {
                 GenreFlag = (GenreFlagValues)((long)row["GenreFlag"]);
                 ContentFlags = (ContentFlagValues)((long)row["ContentFlags"]);
                 Hash = (string)row["Hash"];
-                GamePlayers = new GameCaps((int)(long)row["GameCapsOnline"], (long)row["GameCapsOffline"]);
+                GamePlayers = new GamePlayerCaps((int)(long)row["GameCapsOnline"], (long)row["GameCapsOffline"]);
                 GameCapsFlags = (GameCapsFlagsValues)((long)row["GameCapsFlags"]);
-                FileType = (int)((long)row["FileType"]);
+                FileType = (FileTypes)((long)row["FileType"]);
                 ContentType = (ContentTypeValues)((long)row["ContentType"]);
                 ContentGroup = (ContentGroupValues)((long)row["ContentGroup"]);
                 DefaultGroup = (ContentGroupValues)((long)row["DefaultGroup"]);
-                DateAdded = new Date((long)row["DateAdded"]);
+                DateAdded = DateTime.FromFileTime((long)row["DateAdded"]);
                 FoundAtDepth = (int)((long)row["FoundAtDepth"]);
-                SystemLink = (int)((long)row["SystemLink"]);
+                SystemLink = (long)row["SystemLink"] == 1;
                 ScanPathId = (int)((long)row["ScanPathId"]);
             }
 
             public int BaseVersion { get; set; }
 
-            public Date DateAdded { get; private set; }
+            public DateTime DateAdded { get; private set; }
 
             public string Directory { get; private set; }
 
@@ -141,9 +186,11 @@ namespace AuroraDbManager.Database {
 
             public int DiscNum { get; set; }
 
+            public string DiscInfo { get { return string.Format("{0}/{1}", DiscNum, DiscsInSet); } }
+
             public string Executable { get; private set; }
 
-            public int FileType { get; private set; }
+            public FileTypes FileType { get; private set; }
 
             public int FoundAtDepth { get; private set; }
 
@@ -155,7 +202,7 @@ namespace AuroraDbManager.Database {
 
             public int ScanPathId { get; private set; }
 
-            public int SystemLink { get; set; }
+            public bool SystemLink { get; set; }
 
             public int TitleId { get; set; }
 
@@ -173,7 +220,7 @@ namespace AuroraDbManager.Database {
 
             public GameCapsFlagsValues GameCapsFlags { get; set; }
 
-            public GameCaps GamePlayers { get; set; }
+            public GamePlayerCaps GamePlayers { get; set; }
 
             public GenreFlagValues GenreFlag { get; set; }
 
@@ -187,18 +234,8 @@ namespace AuroraDbManager.Database {
 
             public string TitleName { get; set; }
 
-            public string TitleIdHex { get { return TitleId.ToString("X08"); } }
-
-            public string MediaIdHex { get { return MediaId.ToString("X08"); } }
-
-            public string BaseVersionHex { get { return BaseVersion.ToString("X08"); } }
-
-            public class Date {
-                public Date(long value) { }
-            }
-
-            public class GameCaps {
-                public GameCaps(int online, long offline) {
+            public class GamePlayerCaps {
+                public GamePlayerCaps(int online, long offline) {
                     MinimumOnlineMultiplayerPlayers = (byte)((online & 0x00FF0000) >> 16);
                     MaximumOnlineMultiplayerPlayers = (byte)((online & 0xFF000000) >> 24);
                     MinimumOnlineCoOpPlayers = (byte)(online & 0x000000FF);
@@ -256,7 +293,7 @@ namespace AuroraDbManager.Database {
                 BaseVersion = (int)((long)row["BaseVersion"]);
                 Version = (int)((long)row["Version"]);
                 FileName = (string)row["FileName"];
-                FileSize = (long)row["FileSize"]; // This isn't 100% correct, it's actually stored as "##.##kb", or "##.#MB" for instance... and not as an integer number, but trying to cast it to string causes a crash... dunno how to do this one?
+                FileSize = (string)row["FileSize"];
                 LiveDeviceId = (string)row["LiveDeviceId"];
                 LivePath = (string)row["LivePath"];
                 BackupPath = (string)row["BackupPath"];
@@ -277,7 +314,7 @@ namespace AuroraDbManager.Database {
 
             public string FileName { get; set; }
 
-            public long FileSize { get; private set; }
+            public string FileSize { get; private set; }
 
             public string LiveDeviceId { get; private set; }
 

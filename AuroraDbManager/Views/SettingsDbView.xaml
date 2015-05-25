@@ -16,23 +16,23 @@
                           SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                           RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}" />
-                        <DataGridTextColumn Header="TU ID" Width="Auto" Binding="{Binding TitleUpdateId}" />
-                        <DataGridTextColumn Header="Display Name" Binding="{Binding Info.DisplayName}" Width="Auto" />
-                        <DataGridTextColumn Header="TitleID" Width="Auto"
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="TU ID" Width="SizeToCells" Binding="{Binding TitleUpdateId}" />
+                        <DataGridTextColumn Header="Display Name" Binding="{Binding Info.DisplayName}" Width="SizeToCells" />
+                        <DataGridTextColumn Header="TitleID" Width="SizeToCells"
                                             Binding="{Binding Info.TitleID, Converter={conv:IntHexConverter}}" />
-                        <DataGridTextColumn Header="MediaID" Width="Auto"
+                        <DataGridTextColumn Header="MediaID" Width="SizeToCells"
                                             Binding="{Binding Info.MediaID, Converter={conv:IntHexConverter}}" />
                         <DataGridTextColumn Header="Base Version"
                                             Binding="{Binding Info.BaseVersion, Converter={conv:IntHexConverter}}"
-                                            Width="Auto" />
-                        <DataGridTextColumn Header="Version" Width="Auto" Binding="{Binding Info.Version}" />
-                        <DataGridTextColumn Header="Filename" Width="Auto" Binding="{Binding Info.FileName}" />
-                        <DataGridTextColumn Header="Filesize" Width="Auto" Binding="{Binding Info.FileSize}" />
-                        <DataGridTextColumn Header="Device ID" Width="Auto" Binding="{Binding Info.LiveDeviceId}" />
-                        <DataGridTextColumn Header="Path" Width="Auto" Binding="{Binding Info.LivePath}" />
-                        <DataGridTextColumn Header="Backup Path" Width="Auto" Binding="{Binding Info.BackupPath}" />
-                        <DataGridTextColumn Header="Hash" Width="Auto" Binding="{Binding Info.Hash}" />
+                                            Width="SizeToCells" />
+                        <DataGridTextColumn Header="Version" Width="SizeToCells" Binding="{Binding Info.Version}" />
+                        <DataGridTextColumn Header="Filename" Width="SizeToCells" Binding="{Binding Info.FileName}" />
+                        <DataGridTextColumn Header="Filesize" Width="SizeToCells" Binding="{Binding Info.FileSize}" />
+                        <DataGridTextColumn Header="Device ID" Width="SizeToCells" Binding="{Binding Info.LiveDeviceId}" />
+                        <DataGridTextColumn Header="Path" Width="SizeToCells" Binding="{Binding Info.LivePath}" />
+                        <DataGridTextColumn Header="Backup Path" Width="SizeToCells" Binding="{Binding Info.BackupPath}" />
+                        <DataGridTextColumn Header="Hash" Width="SizeToCells" Binding="{Binding Info.Hash}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -45,9 +45,9 @@
                           SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                           RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}" />
-                        <DataGridTextColumn Header="Gamertag" Width="Auto" Binding="{Binding GameTag}" />
-                        <DataGridTextColumn Header="XUID" Width="Auto" Binding="{Binding Xuid}" />
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Gamertag" Width="SizeToCells" Binding="{Binding GameTag}" />
+                        <DataGridTextColumn Header="XUID" Width="SizeToCells" Binding="{Binding Xuid}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -60,14 +60,14 @@
                       SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Display Name" Width="Auto" Binding="{Binding DisplayName}"/>
-                        <DataGridTextColumn Header="Sort Method" Width="Auto" Binding="{Binding SortMethod}"/>
-                        <DataGridTextColumn Header="Filters" Width="Auto" Binding="{Binding FilterMethod}"/>
-                        <DataGridTextColumn Header="Flags" Width="Auto" Binding="{Binding Flags}"/>
-                        <DataGridTextColumn Header="Creator XUID" Width="Auto" Binding="{Binding CreatorXUID}"/>
-                        <DataGridTextColumn Header="Order #" Width="Auto" Binding="{Binding OrderIndex}"/>
-                        <DataGridTextColumn Header="Icon Hash" Width="Auto" Binding="{Binding IconHash}"/>
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Display Name" Width="SizeToCells" Binding="{Binding DisplayName}"/>
+                        <DataGridTextColumn Header="Sort Method" Width="SizeToCells" Binding="{Binding SortMethod}"/>
+                        <DataGridTextColumn Header="Filters" Width="SizeToCells" Binding="{Binding FilterMethod}"/>
+                        <DataGridTextColumn Header="Flags" Width="SizeToCells" Binding="{Binding Flags}"/>
+                        <DataGridTextColumn Header="Creator XUID" Width="SizeToCells" Binding="{Binding CreatorXUID}"/>
+                        <DataGridTextColumn Header="Order #" Width="SizeToCells" Binding="{Binding OrderIndex}"/>
+                        <DataGridTextColumn Header="Icon Hash" Width="SizeToCells" Binding="{Binding IconHash}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -80,12 +80,12 @@
                       SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Path" Width="Auto" Binding="{Binding Path}"/>
-                        <DataGridTextColumn Header="Device ID" Width="Auto" Binding="{Binding DeviceID}" />
-                        <DataGridTextColumn Header="Depth" Width="Auto" Binding="{Binding Depth}" />
-                        <DataGridTextColumn Header="Script Data" Width="Auto" Binding="{Binding ScriptData}" />
-                        <DataGridTextColumn Header="Options" Width="Auto" Binding="{Binding OptionsFlag}" />
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Path" Width="SizeToCells" Binding="{Binding Path}"/>
+                        <DataGridTextColumn Header="Device ID" Width="SizeToCells" Binding="{Binding DeviceID}" />
+                        <DataGridTextColumn Header="Depth" Width="SizeToCells" Binding="{Binding Depth}" />
+                        <DataGridTextColumn Header="Script Data" Width="SizeToCells" Binding="{Binding ScriptData}" />
+                        <DataGridTextColumn Header="Options" Width="SizeToCells" Binding="{Binding OptionsFlag}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -98,9 +98,9 @@
                       SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Name" Width="Auto" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Value" Width="Auto" Binding="{Binding Value}" />
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Name" Width="SizeToCells" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Value" Width="SizeToCells" Binding="{Binding Value}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -113,10 +113,10 @@
                       SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Name" Width="Auto" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Value" Width="Auto" Binding="{Binding Value}" />
-                        <DataGridTextColumn Header="Profile ID" Width="Auto" Binding="{Binding ProfileId}" />
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Name" Width="SizeToCells" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Value" Width="SizeToCells" Binding="{Binding Value}" />
+                        <DataGridTextColumn Header="Profile ID" Width="SizeToCells" Binding="{Binding ProfileId}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -129,10 +129,10 @@
                       SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="TitleID" Width="Auto" Binding="{Binding TitleID, Converter={conv:IntHexConverter}}" />
-                        <DataGridTextColumn Header="Hash" Width="Auto" Binding="{Binding Hash}"/>
-                        <DataGridTextColumn Header="Value" Width="Auto" Binding="{Binding Value}"/>
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="TitleID" Width="SizeToCells" Binding="{Binding TitleID, Converter={conv:IntHexConverter}}" />
+                        <DataGridTextColumn Header="Hash" Width="SizeToCells" Binding="{Binding Hash}"/>
+                        <DataGridTextColumn Header="Value" Width="SizeToCells" Binding="{Binding Value}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -145,9 +145,9 @@
                       SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Content ID" Width="Auto" Binding="{Binding ContentId}"/>
-                        <DataGridTextColumn Header="Profile ID" Width="Auto" Binding="{Binding ProfileId}"/>
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Content ID" Width="SizeToCells" Binding="{Binding ContentId}"/>
+                        <DataGridTextColumn Header="Profile ID" Width="SizeToCells" Binding="{Binding ProfileId}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -160,9 +160,9 @@
                       SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Content ID" Width="Auto" Binding="{Binding ContentId}"/>
-                        <DataGridTextColumn Header="Profile ID" Width="Auto" Binding="{Binding ProfileId}"/>
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Content ID" Width="SizeToCells" Binding="{Binding ContentId}"/>
+                        <DataGridTextColumn Header="Profile ID" Width="SizeToCells" Binding="{Binding ProfileId}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -175,10 +175,10 @@
                       SelectionMode="Single" SelectionUnit="FullRow" Background="WhiteSmoke"
                       RowBackground="WhiteSmoke" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Date &amp; Time" Width="Auto" Binding="{Binding DateTime}"/>
-                        <DataGridTextColumn Header="Content ID" Width="Auto" Binding="{Binding ContentId}"/>
-                        <DataGridTextColumn Header="Profile ID" Width="Auto" Binding="{Binding ProfileId}"/>
+                        <DataGridTextColumn Header="ID" Width="SizeToCells" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Date &amp; Time" Width="SizeToCells" Binding="{Binding DateTime}"/>
+                        <DataGridTextColumn Header="Content ID" Width="SizeToCells" Binding="{Binding ContentId}"/>
+                        <DataGridTextColumn Header="Profile ID" Width="SizeToCells" Binding="{Binding ProfileId}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

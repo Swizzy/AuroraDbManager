@@ -62,6 +62,8 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Controls\ScrollableTabPanel.cs" />
     <Compile Include="Classes\Converters\BaseConverter.cs" />
+    <Compile Include="Classes\Converters\DescriptionConverter.cs" />
+    <Compile Include="Classes\Converters\DateConverter.cs" />
     <Compile Include="Classes\Converters\ScrollbarConverters.cs" />
     <Compile Include="Classes\StatusEventArgs.cs" />
     <Page Include="Views\SettingsDbView.xaml">
