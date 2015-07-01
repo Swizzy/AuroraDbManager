@@ -64,7 +64,7 @@
                         <DataGridTextColumn Header="Display Name" Width="SizeToCells" Binding="{Binding DisplayName}"/>
                         <DataGridTextColumn Header="Sort Method" Width="SizeToCells" Binding="{Binding SortMethod}"/>
                         <DataGridTextColumn Header="Filters" Width="SizeToCells" Binding="{Binding FilterMethod}"/>
-                        <DataGridTextColumn Header="Flags" Width="SizeToCells" Binding="{Binding Flags}"/>
+                        <DataGridTextColumn Header="DbFlags" Width="SizeToCells" Binding="{Binding Flags}"/>
                         <DataGridTextColumn Header="Creator XUID" Width="SizeToCells" Binding="{Binding CreatorXUID}"/>
                         <DataGridTextColumn Header="Order #" Width="SizeToCells" Binding="{Binding OrderIndex}"/>
                         <DataGridTextColumn Header="Icon Hash" Width="SizeToCells" Binding="{Binding IconHash}"/>

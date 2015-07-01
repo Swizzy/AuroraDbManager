@@ -84,6 +84,9 @@
     </Compile>
     <Compile Include="Classes\Converters\HexConverter.cs" />
     <Compile Include="Database\AuroraDbManager.cs" />
+    <Compile Include="Database\ContentItem.cs" />
+    <Compile Include="Database\DbFlags.cs" />
+    <Compile Include="Database\TitleUpdateItem.cs" />
     <Compile Include="Views\SettingsDbView.xaml.cs">
       <DependentUpon>SettingsDbView.xaml</DependentUpon>
     </Compile>
